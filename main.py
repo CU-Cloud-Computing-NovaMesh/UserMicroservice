@@ -1,9 +1,11 @@
+import os
 from uuid import UUID
 from typing import List
 from fastapi import FastAPI, HTTPException
 from models.user import UserRead, UserCreate, UserUpdate  
 from models.address import Address, AddressCreate, AddressUpdate
 
+port = int(os.environ.get("FASTAPIPORT", 8000))
 app = FastAPI(title="User Service (skeleton)", version="0.1.0")
 
 NOT_IMPL = HTTPException(status_code=501, detail="Not implemented")
@@ -81,5 +83,6 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+
 
 
