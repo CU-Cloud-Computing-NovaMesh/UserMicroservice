@@ -66,3 +66,20 @@ def replace_address(address_id: UUID, payload: AddressUpdate):
 @app.delete("/addresses/{address_id}", tags=["addresses"])
 def delete_address(address_id: UUID):
     raise NOT_IMPL
+
+# -----------------------------------------------------------------------------
+# Root
+# -----------------------------------------------------------------------------
+@app.get("/")
+def root():
+    return {"message": "Welcome to the User/Address API. See /docs for OpenAPI UI."}
+
+# -----------------------------------------------------------------------------
+# Entrypoint for `python main.py`
+# -----------------------------------------------------------------------------
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+
+
